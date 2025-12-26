@@ -1,7 +1,7 @@
 package com.example.coding_challenge.controller;
 
+
 import com.example.coding_challenge.dto.ProductDto;
-import com.example.coding_challenge.entity.Product;
 import com.example.coding_challenge.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
