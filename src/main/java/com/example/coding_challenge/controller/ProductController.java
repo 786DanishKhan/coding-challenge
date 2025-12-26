@@ -1,6 +1,7 @@
 package com.example.coding_challenge.controller;
 
 import com.example.coding_challenge.dto.ProductDto;
+import com.example.coding_challenge.entity.Product;
 import com.example.coding_challenge.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,23 +15,27 @@ public class ProductController {
 
     @PostMapping("/products")
     public List<ProductDto> add(@RequestBody List<ProductDto> productDtos) {
-        productService.addProduct(productDtos);
+        productService.addProducts(productDtos);
         return productDtos;
     }
 
     @GetMapping("/products")
-    public List<ProductDto> product() {
-        return productService.getProducts();
+    public List<ProductDto> getProducts() {
+        return productService.getProductDtos();
     }
 
     @GetMapping("/products/{id}")
-    public ProductDto getById(@RequestParam int id) {
+    public ProductDto getById(@RequestParam Long id) {
         return productService.getById(id);
     }
 
     @DeleteMapping("/products/{id}")
-    public int deleteById(@PathVariable int id) {
+    public void deleteById(@PathVariable Long id) {
         productService.deleteProduct(id);
-        return id;
+    }
+
+    @PutMapping("/products")
+    public void update(@RequestBody ProductDto productDto) {
+        productService.updateProduct(productDto);
     }
 }
