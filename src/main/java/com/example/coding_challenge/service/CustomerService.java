@@ -6,6 +6,7 @@ import com.example.coding_challenge.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -24,7 +25,7 @@ public class CustomerService {
 
     public List<CustomerDto> getCustomers() {
         List<Customer> customers = customerRepository.findAll();
-        List<CustomerDto> customerDtos = new java.util.ArrayList<>();
+        List<CustomerDto> customerDtos = new ArrayList<>();
         for (Customer c : customers) {
             CustomerDto obj = new CustomerDto(c.getId(), c.getName(), c.getEmail());
             customerDtos.add(obj);
